@@ -54,14 +54,14 @@ export function ContactForm() {
                 <Phone className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Phone</h3>
-                  <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+                  <p className="text-gray-600 dark:text-gray-400">+1 (609) 402-1649</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <MapPin className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Location</h3>
-                  <p className="text-gray-600 dark:text-gray-400">San Francisco, CA</p>
+                  <p className="text-gray-600 dark:text-gray-400">Atlanta, GA</p>
                 </div>
               </div>
             </div>
