@@ -4,7 +4,8 @@ import { FormBigin } from './Form.Bigin';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     company: '',
     message: '',
@@ -24,7 +25,7 @@ export function ContactForm() {
     console.log('Form submitted:', formData);
     setSubmitted(true);
     setTimeout(() => {
-      setFormData({ name: '', email: '', company: '', message: '' });
+      setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' });
       setSubmitted(false);
     }, 3000);
   };
@@ -74,22 +75,37 @@ export function ContactForm() {
                 Thank you! We'll be in touch soon.
               </div>
             )}
-            <FormBigin />
-
-            {/* <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Full Name
+                  First Name
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
+                  autoComplete="given-name"
+                  value={formData.firstName}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
-                  placeholder="John Doe"
+                  placeholder="John"
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  autoComplete="family-name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
+                  placeholder="Doe"
                 />
               </div>
 
@@ -146,7 +162,7 @@ export function ContactForm() {
               >
                 Send Message
               </button>
-            </form> */}
+            </form>
           </div>
         </div>
       </div>
