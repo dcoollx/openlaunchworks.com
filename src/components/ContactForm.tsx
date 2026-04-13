@@ -1,33 +1,22 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { FormBigin } from './Form.Bigin';
+import type { ZohoContact } from '../api/zoho/Zoho.types';
+import { useCreateContact } from '../hooks/useCreateContact';
 
 export function ContactForm() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    message: '',
-  });
+  const { mutate: createContact } = useCreateContact();
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to a server
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+
+    const newContact: Partial<ZohoContact> = { first_name: 'test', last_name: 'test'};
+    console.log(newContact);
+    createContact(newContact);
   };
 
   return (
@@ -85,8 +74,6 @@ export function ContactForm() {
                   id="name"
                   name="name"
                   autoComplete="given-name"
-                  value={formData.firstName}
-                  onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
                   placeholder="John"
@@ -101,8 +88,6 @@ export function ContactForm() {
                   id="lastName"
                   name="lastName"
                   autoComplete="family-name"
-                  value={formData.lastName}
-                  onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
                   placeholder="Doe"
@@ -117,8 +102,6 @@ export function ContactForm() {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
                   placeholder="john@example.com"
@@ -133,8 +116,6 @@ export function ContactForm() {
                   type="text"
                   id="company"
                   name="company"
-                  value={formData.company}
-                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
                   placeholder="Your Company"
                 />
@@ -147,8 +128,6 @@ export function ContactForm() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   rows={5}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition resize-none"
