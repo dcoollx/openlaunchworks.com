@@ -7,11 +7,7 @@ export const useZohoClient = () => {
     // memoize the ZohoClient instance to avoid creating a new instance on every render
     const zohoClient = useMemo(() => {
         
-        const client = new ZohoClient({
-            grant_type: ZOHO_GRANT_TYPE,
-            client_id: ZOHO_CLIENT_ID,
-            client_secret: ZOHO_CLIENT_SECRET
-        });
+        const client = new ZohoClient();
         client.init();
         return client;
     }, [ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET, ZOHO_GRANT_TYPE]);
