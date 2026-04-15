@@ -8,8 +8,7 @@ export const useZohoClient = () => {
     const zohoClient = useMemo(() => {
         
         const client = new ZohoClient();
-        client.init();
         return client;
-    }, [ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET, ZOHO_GRANT_TYPE]);
+    }, []);
     return zohoClient;
 } 

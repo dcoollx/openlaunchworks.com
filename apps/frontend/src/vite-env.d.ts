@@ -1,1 +1,1 @@
-declare const VITE_API_URL: string;
+declare let VITE_API_URL: string;
