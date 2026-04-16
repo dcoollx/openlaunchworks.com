@@ -20,7 +20,7 @@ type ZOHOProduct =  {
       "$taxable": boolean
     }
 const getProductImage = async (productId: string, accessToken: string) => {
-  const response = await fetch(`https://zohoapis.com{productId}/photo`, {
+  const response = await fetch(`https://zohoapis.com/{productId}/photo`, {
     headers: { 'Authorization': `Zoho-oauthtoken ${accessToken}` }
   });
 
@@ -65,9 +65,10 @@ export const handler: APIGatewayProxyHandlerV2 = async (
   event: APIGatewayProxyEventV2,
   context: Context,
 ) => {
+  const {method, path } = event.requestContext.http;
   const tableName = process.env.TABLE_NAME!;
-  if(event.rawPath === '/products'){
-    if (event.requestContext.http.method === 'GET') {
+  if(path === '/products'){
+    if (method === 'GET') {
       try {
         const products = await getProducts(tableName);
 
@@ -77,7 +78,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (
         return response(500, { message: 'Error fetching products' });
       }
     }
-    if (event.requestContext.http.method === 'POST') {
+    if (method === 'POST') {
       if (!event.body) {
         return response(400, { message: 'Missing request body' });
       }
@@ -91,7 +92,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (
       }
     }
   }
-  if(event.rawPath === '/contacts' && event.requestContext.http.method === 'POST'){
+  if(path === '/contacts' && event.requestContext.http.method === 'POST'){
     if (!event.body) {
       return response(400, { message: 'Missing request body' });
     }
@@ -99,7 +100,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (
     console.log('adding a new contact')
 
   }
-  if(event.rawPath === '/update'){
+  if(path === '/update'){
     //for now i will make this endpoint to trigger a sync with zoho, in the future i want this to be a webhook
     console.log('syncing with zoho')
     try{

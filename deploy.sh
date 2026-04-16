@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-set -a            # automatically export all variables
-source ./.env
-set +a            # disable automatic exporting
+
+if [ -f ./env]; then
+  set -a            # automatically export all variables
+  source ./.env
+  set +a 
+fi           # disable automatic exporting
 set -e
 # check if Site is set
 if [ -z "$Site" ]; then
@@ -13,7 +16,8 @@ aws cloudformation deploy \
   --template-file packaged-template.yaml \
   --stack-name "$Site-stack" \
   --parameter-overrides \
-    UseCustomDomain=false  \
+    UseCustomDomain=true  \
+    DomainName="$Site".com
     ZOHOCLIENTID="$ZOHO_CLIENT_ID" \
     ZOHOCLIENTSECRET="$ZOHO_CLIENT_SECRET" \
     ZOHOACCESSTOKEN="$ZOHO_ACCESS_TOKEN" \
