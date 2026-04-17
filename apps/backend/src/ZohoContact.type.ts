@@ -23,4 +23,3 @@ export interface ZohoContact {
 			"Mailing_Country": string,
 			"Mailing_Zip": string
 }
-

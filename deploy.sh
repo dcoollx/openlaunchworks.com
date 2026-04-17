@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-if [ -f ./env]; then
-  set -a            # automatically export all variables
-  source ./.env
-  set +a 
-fi           # disable automatic exporting
+set -a            # automatically export all variables
+source ./.env
+set +a           # disable automatic exporting
 set -e
 # check if Site is set
 if [ -z "$Site" ]; then
@@ -17,12 +15,13 @@ aws cloudformation deploy \
   --stack-name "$Site-stack" \
   --parameter-overrides \
     UseCustomDomain=true  \
-    DomainName="$Site".com
+    DomainName="$Site".com \
     ZOHOCLIENTID="$ZOHO_CLIENT_ID" \
     ZOHOCLIENTSECRET="$ZOHO_CLIENT_SECRET" \
     ZOHOACCESSTOKEN="$ZOHO_ACCESS_TOKEN" \
     ZOHOREFRESHTOKEN="$ZOHO_REFRESH_TOKEN" \
   --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
+
 
 # capture lambda function url from stack then update frontend config with it
 export VITE_API_URL=$(aws cloudformation describe-stacks --stack-name "$Site-stack" --query "Stacks[0].Outputs[?OutputKey=='LambdaAPIUrl'].OutputValue" --output text)  

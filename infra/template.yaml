@@ -118,9 +118,6 @@ Resources:
             Principal: "*"
             Action: s3:GetObject
             Resource: !Sub arn:aws:s3:::${HostingBucket}/*
-            Condition:
-              StringLike:
-                AWS:SourceArn: !Sub arn:aws:partition:cloudfront::${AWS::AccountId}:distribution/*
 
   # --- BACKEND RESOURCES ---
 

@@ -43,7 +43,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-block mb-4 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full">
             <span className="text-purple-600 dark:text-purple-400 font-medium text-sm">
-              ✨ The complete solution for small businesses
+              ✨ Business in a bottle
             </span>
           </div>
 
