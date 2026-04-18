@@ -47,6 +47,6 @@ export class ZohoClient {
         return this.axiosInstance.post('/contacts', newContatct);
     }
       async getProducts() {
-        return this.axiosInstance.get('/products'); // only gets first 200 products
+        return this.axiosInstance.get('/products').then((response: AxiosResponse) => response.data); // only gets first 200 products
     }
 }
