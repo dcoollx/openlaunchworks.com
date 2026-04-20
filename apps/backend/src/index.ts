@@ -5,6 +5,7 @@ import {
   PutCommand,
   ScanCommand,
 } from '@aws-sdk/lib-dynamodb';
+import { Serializable } from 'child_process';
 
 const client = new DynamoDBClient({});
 const dynamodb = DynamoDBDocumentClient.from(client);
@@ -56,7 +57,7 @@ const AddProduct = async (tableName: string, product: ZOHOProduct & { photo: str
     return result.Items;
   }
 
-  const response = (statusCode: number, body: any, headers?: Record<string, string>): APIGatewayProxyResult => ({
+  const response = (statusCode: number, body: Serializable, headers?: Record<string, string>): APIGatewayProxyResult => ({
     statusCode,
     body: JSON.stringify(body),
     headers: {

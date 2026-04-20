@@ -4,7 +4,9 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "start": "npm run start --workspaces --if-present",
-    "deploy": "sh deploy.sh"
+    "lint": "eslint .",
+    "deploy": "sh deploy.sh",
+    "test": "echo no tests yet"
   },
   "workspaces": [
     "apps/*",

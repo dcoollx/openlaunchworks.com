@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { FormBigin } from './Form.Bigin';
 import type { ZohoContact } from '../api/zoho/Zoho.types';
 import { useCreateContact } from '../hooks/useCreateContact';
 
@@ -15,6 +14,7 @@ export function ContactForm() {
     // Here you would typically send the form data to a server
     const newContact = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement)) as unknown as ZohoContact;
     createContact(newContact);
+    setSubmitted(true);
   };
 
   return (

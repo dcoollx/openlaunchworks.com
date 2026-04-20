@@ -1,28 +1,15 @@
 import axios, { type AxiosResponse, type AxiosInstance } from 'axios';
 import type { ZohoContact } from './Zoho.types';
 
-type ZohoTokenResponse = {
-    access_token: string,
-    refresh_token: string
-    api_domain: string,
-    token_type: "Bearer",
-    expires_in: number;
-};
-type ZohoAccessTokenResponse = {
-    access_token: string,
-    api_domain: string,
-    token_type: "Bearer",
-    expires_in: number;
-};
 
-const envVarDefined = (vars: string[]): boolean => {
-    return vars.every((v) => { 
-        if(typeof v === 'string' && v.length > 0) {
-            return true;
-        }
-        return false;
-    });
-};
+// const envVarDefined = (vars: string[]): boolean => {
+//     return vars.every((v) => { 
+//         if(typeof v === 'string' && v.length > 0) {
+//             return true;
+//         }
+//         return false;
+//     });
+// };
 
 export class ZohoClient {
     axiosInstance: AxiosInstance;
