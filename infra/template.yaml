@@ -164,6 +164,16 @@ Resources:
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
 
+# This is unique to this project and not a standard part of the template. It allows us to share common code across multiple Lambda functions without duplicating it in each function's deployment package. You would need to build and upload this layer to S3 before deploying the stack, and then reference the correct S3Key here.
+  CommonLayerArn:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: common-layer
+      Description: "Common utilities for backend Lambda functions"
+      Content: ./infra/commonlayer
+      CompatibleRuntimes:
+        - nodejs20.x
+# ----------------------------
   APIFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -171,10 +181,13 @@ Resources:
       Runtime: nodejs20.x
       Handler: index.handler
       CodeUri: ../apps/backend/dist/
+      Layers:
+        - !Ref CommonLayerArn
       FunctionUrlConfig:
         AuthType: NONE
       Environment:
         Variables:
+          DOMAIN: !Ref DomainName
           ZOHO_CLIENT_ID: !Ref ZOHOCLIENTID
           ZOHO_CLIENT_SECRET: !Ref ZOHOCLIENTSECRET
           ZOHO_ACCESS_TOKEN: !Ref ZOHOACCESSTOKEN
@@ -195,3 +208,9 @@ Outputs:
   
   LambdaAPIUrl:
     Value: !GetAtt APIFunctionUrl.FunctionUrl
+  
+  CommonLayerArn:
+    Description: "ARN of the common layer for backend functions"
+    Value: !Ref CommonLayerArn
+    Export:
+      Name: !Sub CommonLayerArn

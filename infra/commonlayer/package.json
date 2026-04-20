@@ -1,0 +1,18 @@
+{
+  "name": "common-layer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "tsc -b --noEmit",
+    "build": "ts-node src/build.ts"
+  },
+  "dependencies": {
+    "stripe": "^22.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "esbuild": "^0.28.0"
+  }
+}

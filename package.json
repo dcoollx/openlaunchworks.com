@@ -7,6 +7,7 @@
     "deploy": "sh deploy.sh"
   },
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "infra/commonlayer"
   ]
 }
