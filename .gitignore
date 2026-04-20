@@ -22,4 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.en
+packaged-template.yaml
 .env
+infra/commonlayer/nodejs/

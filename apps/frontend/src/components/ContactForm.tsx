@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { FormBigin } from './Form.Bigin';
 import type { ZohoContact } from '../api/zoho/Zoho.types';
 import { useCreateContact } from '../hooks/useCreateContact';
 
@@ -13,10 +12,9 @@ export function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to a server
-
-    const newContact: Partial<ZohoContact> = { first_name: 'test', last_name: 'test'};
-    console.log(newContact);
+    const newContact = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement)) as unknown as ZohoContact;
     createContact(newContact);
+    setSubmitted(true);
   };
 
   return (
@@ -66,13 +64,13 @@ export function ContactForm() {
             )}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="First_Name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   First Name
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="First_Name"
+                  name="First_Name"
                   autoComplete="given-name"
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
@@ -80,13 +78,13 @@ export function ContactForm() {
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="Last_Name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Last Name
                 </label>
                 <input
                   type="text"
-                  id="lastName"
-                  name="lastName"
+                  id="Last_Name"
+                  name="Last_Name"
                   autoComplete="family-name"
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
@@ -95,13 +93,13 @@ export function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="Email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="Email"
+                  name="Email"
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
                   placeholder="john@example.com"

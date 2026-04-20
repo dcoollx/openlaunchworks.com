@@ -1,0 +1,1 @@
+declare let VITE_API_URL: string;

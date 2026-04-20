@@ -1,10 +1,6 @@
-name: Deploy GitHub Pages 
+name: Deploy to aws using s3 and cloudfront
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -27,10 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npx gh-pages -d apps/frontend/dist -u "github-actions-bot <support+actions@github.com>" --cname openlaunchworks.com
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: deploy.sh
+    env:
+        Site: 'openlaunchworks.com'
+        AWS_REGION: 'us-east-1'
