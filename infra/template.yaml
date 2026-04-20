@@ -170,7 +170,7 @@ Resources:
     Properties:
       LayerName: common-layer
       Description: "Common utilities for backend Lambda functions"
-      Content: ./infra/commonlayer
+      Content: ./commonlayer
       CompatibleRuntimes:
         - nodejs20.x
 # ----------------------------
