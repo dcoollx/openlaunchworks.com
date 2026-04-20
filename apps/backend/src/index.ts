@@ -74,7 +74,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (
   if(path === '/products'){
     if (method === 'GET') {
       try {
-        const products = await getProducts(tableName);
+        const products = await getProducts(tableName) ?? [];
 
         return response(200, products);
       } catch (error) {
