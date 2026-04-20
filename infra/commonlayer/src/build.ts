@@ -5,6 +5,7 @@ esbuild.build({
     bundle: true,
     platform: 'node',
     target: 'node20',
+    format: 'cjs',
     outfile: './nodejs/index.js',
     external: ['aws-sdk'], // AWS SDK is available in Lambda environment
 }).catch(() => process.exit(1));
