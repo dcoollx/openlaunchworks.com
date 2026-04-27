@@ -36,4 +36,14 @@ export class ZohoClient {
       async getProducts() {
         return this.axiosInstance.get('/products').then((response: AxiosResponse) => response.data); // only gets first 200 products
     }
+
+     async generateToken(code: string){
+        return await axios.post('https://accounts.zoho.com/oauth/v2/token', {
+        grant_type: 'authorization_code',
+        client_id: '',
+        client_secret: '',
+        redirect_uri: 'https://www.openlaunchworks.com/',
+        code
+    })
+     }
 }

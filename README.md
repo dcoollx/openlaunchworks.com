@@ -37,16 +37,15 @@ npm install
 
 3. Start the development server:
 ```bash
-npm run dev
+npm run start
 ```
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 📜 Available Scripts
 
-- `npm run dev` - Start development server
+- `npm run start` - Start development server
 - `npm run build` - Build for production
-- `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
 ## 📁 Project Structure
@@ -76,27 +75,14 @@ The project uses Tailwind CSS with custom component classes:
 
 ## 🌐 Pages
 
-- **Home** (`/`) - Hero section, features, contact form
-- **FAQ** (`/faq`) - Frequently asked questions
-- **Pricing** (`/pricing`) - Pricing tiers and comparison
 
 ## 🚀 Deployment
 
 Build the project for production:
 
 ```bash
-npm run build
+npm run deploy
 ```
-
-The build artifacts will be stored in the `dist/` directory. Deploy to any static hosting service like Vercel, Netlify, or GitHub Pages.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
 
 ## 📄 License
 
