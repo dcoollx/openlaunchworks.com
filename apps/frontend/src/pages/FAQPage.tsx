@@ -7,20 +7,23 @@ interface FAQItem {
 }
 
 const faqs: FAQItem[] = [
+  { question: "What is a CRM? and why should i have one",
+    answer: "a CRM or Customer Relationship Manager, is software designed to organize your company's releationship with its cusomters, clients and venders. We at Openlaunchworks have partnered with Zoho CRM to provide you with a free and highly cutomized CRM"
+  },
   {
     question: 'What is OpenLaunchWorks?',
     answer:
-      'OpenLaunchWorks is an all-in-one platform designed for small businesses. It combines CRM, payment processing, domain management, web hosting, and a website builder in a single, opinionated tech stack.',
+      'OpenLaunchWorks is an all-in-one platform designed for small businesses as startups. It combines CRM, payment processing, domain management, web hosting, and a custom made website, opinionated tech stack. Take The guesswork out of small business technology so you can focus on growing your business',
   },
   {
     question: 'How does pricing work?',
     answer:
-      'We offer flexible pricing plans starting at $29/month for our Starter plan. Each plan includes core features, and you can upgrade as your business grows. We also offer enterprise plans for larger organizations.',
+      'We offer flexible pricing plans starting at $29/month for a custom website. Our $59 plan includes a custom made WebApp, including intregration with a CRM, Payment gatewaye and more. While we offer subscription based plans that include free consultations and customization, we also offer an upfront price',
   },
   {
     question: 'Can I cancel my subscription anytime?',
     answer:
-      'Yes! You can cancel your subscription at any time, but please note that refunds are only available within 30 days of purchase. You\'ll have access to your data throughout the cancellation process.',
+      'Yes! You can cancel your subscription at any time, but please note that refunds are only available within 30 days of purchase. You will retain access to your CRM and all the data contained within, but your website and servers will be taken offline',
   },
   {
     question: 'Is there a free trial available?',
@@ -30,7 +33,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Do you provide customer support?',
     answer:
-      'Yes, we offer 24/7 customer support through email, chat, and phone. Premium plans also include dedicated account managers and priority support.',
+      'Yes, we offer 24/7 customer support through email, chat, and phone. For Subscription based customers this will include consultations and free upgrades to your customized webapp',
   },
   {
     question: 'How secure is my data?',
@@ -40,7 +43,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Can I integrate OpenLaunchWorks with other tools?',
     answer:
-      'Yes! We have integrations with popular tools like Zapier, Slack, Google Workspace, and many others. Custom API integrations are also available for enterprise customers.',
+      'Yes! We have integrations with popular tools like Zapier, Slack, Google Workspace, and many others. Custom API integrations are also available for subscription customers.',
   },
   {
     question: 'What happens to my data if I leave?',
