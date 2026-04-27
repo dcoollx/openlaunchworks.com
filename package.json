@@ -6,7 +6,8 @@
     "start": "npm-run-all --parallel start:*",
     "start:api": "npm run start --workspace=apps/backend",
     "start:web": "npm run start --workspace=apps/frontend",
-    "test": "echo no tests yet"
+    "test": "echo no tests yet",
+    "deploy": "sh deploy.sh"
   },
   "workspaces": [
     "apps/*",
